@@ -183,7 +183,6 @@ public class SpendingController {
 			spendingDao.insertSpendingTravel(spending);
 			
 			int trvlId = spending.getTrvlId();
-			System.out.println("insertSpendingTravel trvlId = "+trvlId);
 			spendingDao.updateSpendingTravelRate(trvlId); //여행비 사용 금액 비율 갱신하기
 			
 		} catch (Exception e) {
@@ -231,7 +230,6 @@ public class SpendingController {
 		try {
 			
 			int trvlId = spendingDao.getTrvlIdWithTrvlPayId(trvlPayId);
-			System.out.println("getTrvlIdWithTrvlPayId 결과 :: "+trvlId); /////////////////////////////////////////////////////////////////////
 			log.info("여행별 결제내역 삭제 pay_trvl_info");
 			rc = spendingDao.deleteSpendingTravel(trvlPayId);
 			

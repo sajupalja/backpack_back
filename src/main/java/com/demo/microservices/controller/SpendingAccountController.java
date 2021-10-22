@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@RequestMapping("/spending")
 public class SpendingAccountController {
 	
 	@Autowired
@@ -30,7 +32,7 @@ public class SpendingAccountController {
 	
 	
 	@ApiOperation(value="나의 계좌내역 전체 조회 acnt_info")
-	@GetMapping(value="/spending/account/list")
+	@GetMapping(value="/account/list")
 //	public ResponseEntity <List<SpendingVO>> selectSpendingAccountAll(@PathVariable int userId){
 	public ResponseEntity <List<SpendingAccountVO>> selectSpendingAccountAll(@RequestParam("userId") int userId){
 
@@ -50,7 +52,7 @@ public class SpendingAccountController {
 	
 	
 	@ApiOperation(value="나의 전체 예산 불러오기")
-	@GetMapping(value="/spending/account/budget")
+	@GetMapping(value="/account/budget")
 	public ResponseEntity <Integer> selectSpendingAccountBudget(@RequestParam("userId") int userId){
 		
 		int totalBudget = 0;
@@ -72,7 +74,7 @@ public class SpendingAccountController {
 	
 	
 	@ApiOperation(value="나의 계좌내역 중 한개 상세조회 acnt_info")
-	@GetMapping(value="/spending/account/{accountId}")
+	@GetMapping(value="/account/{accountId}")
 	public ResponseEntity <SpendingAccountVO> selectSpendingAccount(@PathVariable int accountId){
 		SpendingAccountVO spend = null;
 		try {
@@ -90,7 +92,7 @@ public class SpendingAccountController {
 	
 	
 	@ApiOperation(value="계좌내역 등록 acnt_info")
-	@PostMapping(value="/spending/account")
+	@PostMapping(value="/account")
 	public ResponseEntity <String> insertSpendingAccount(@RequestBody SpendingAccountVO spending){
 		int rc = 0;
 		String msg = null;
@@ -111,7 +113,7 @@ public class SpendingAccountController {
 	}
 	
 	@ApiOperation(value="계좌내역 수정 acnt_info")
-	@PutMapping(value="/spending/account")
+	@PutMapping(value="/account")
 	public ResponseEntity <String> updateSpendingAccount(@RequestBody SpendingAccountVO spending){
 		int rc = 0;
 		String msg = null;
@@ -132,7 +134,7 @@ public class SpendingAccountController {
 	}
 	
 	@ApiOperation(value="계좌내역 삭제 acnt_info")
-	@DeleteMapping(value="/spending/account/{accountId}")
+	@DeleteMapping(value="/account/{accountId}")
 	public ResponseEntity <String> deleteSpendingAccount(@PathVariable int accountId){
 		int rc = 0;
 		String msg = null;

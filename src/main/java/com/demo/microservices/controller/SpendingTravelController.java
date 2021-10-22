@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@RequestMapping("/spending")
 public class SpendingTravelController {
 	
 	@Autowired
@@ -34,7 +36,7 @@ public class SpendingTravelController {
 	
 
 	@ApiOperation(value="나의 여행별 결제내역 전체 조회 pay_trvl_info")
-	@GetMapping(value="/spending/travel/list")
+	@GetMapping(value="/travel/list")
 	public ResponseEntity <List<SpendingTravelVO>> selectSpendingTravelAll(
 //			@ApiParam(value = "결제내역 조회할 여행 pk", required = true)@RequestParam("trvlId") int trvlId, 
 			@RequestParam("trvlId") int trvlId, 
@@ -63,7 +65,7 @@ public class SpendingTravelController {
 	
 
 	@ApiOperation(value="여행별 결제내역 중 한개 상세조회 trvl_pay_info")
-	@GetMapping(value="/spending/travel/{trvlPayId}")
+	@GetMapping(value="/travel/{trvlPayId}")
 	public ResponseEntity <SpendingTravelVO> selectSpendingTravel(@PathVariable int trvlPayId){
 		SpendingTravelVO spend = null;
 		try {
@@ -81,7 +83,7 @@ public class SpendingTravelController {
 	
 
 	@ApiOperation(value="여행별 결제내역 등록 pay_trvl_info")
-	@PostMapping(value="/spending/travel")
+	@PostMapping(value="/travel")
 	public ResponseEntity <String> insertSpendingTravel(@RequestBody SpendingTravelVO spending){
 		int rc = 0;
 		String msg = null;
@@ -106,7 +108,7 @@ public class SpendingTravelController {
 	}
 	
 	@ApiOperation(value="여행별 결제내역 수정 pay_trvl_info")
-	@PutMapping(value="/spending/travel")
+	@PutMapping(value="/travel")
 	public ResponseEntity <String> updateSpendingTravel(@RequestBody SpendingTravelVO spending){
 		int rc = 0;
 		String msg = null;
@@ -130,7 +132,7 @@ public class SpendingTravelController {
 	}
 	
 	@ApiOperation(value="여행별 결제내역 삭제 pay_trvl_info")
-	@DeleteMapping(value="/spending/travel/{trvlPayId}")
+	@DeleteMapping(value="/travel/{trvlPayId}")
 	public ResponseEntity <String> deleteSpendingTravel(@PathVariable int trvlPayId){
 		int rc = 0;
 		String msg = null;

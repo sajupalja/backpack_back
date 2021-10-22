@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@RequestMapping("/spending")
 public class SpendingCardController {
 	
 	@Autowired
@@ -30,7 +32,7 @@ public class SpendingCardController {
 	
 	
 	@ApiOperation(value="나의 카드내역 전체 조회 card_info")
-	@GetMapping(value="/spending/card/list")
+	@GetMapping(value="/card/list")
 	public ResponseEntity <List<SpendingCardVO>> selectSpendingCardAll(@RequestParam("userId") int userId){
 
 		List<SpendingCardVO> list = null;
@@ -51,7 +53,7 @@ public class SpendingCardController {
 	
 	
 	@ApiOperation(value="나의 카드내역 중 한개 상세조회 card_info")
-	@GetMapping(value="/spending/card/{cardId}")
+	@GetMapping(value="/card/{cardId}")
 	public ResponseEntity <SpendingCardVO> selectSpendingCard(@PathVariable int cardId){
 		SpendingCardVO spend = null;
 		try {
@@ -69,7 +71,7 @@ public class SpendingCardController {
 	
 	
 	@ApiOperation(value="카드내역 등록 card_info")
-	@PostMapping(value="/spending/card")
+	@PostMapping(value="/card")
 	public ResponseEntity <String> insertSpendingCard(@RequestBody SpendingCardVO spending){
 		int rc = 0;
 		String msg = null;
@@ -90,7 +92,7 @@ public class SpendingCardController {
 	}
 	
 	@ApiOperation(value="카드내역 수정 card_info")
-	@PutMapping(value="/spending/card")
+	@PutMapping(value="/card")
 	public ResponseEntity <String> updateSpendingCard(@RequestBody SpendingCardVO spending){
 		int rc = 0;
 		String msg = null;
@@ -111,7 +113,7 @@ public class SpendingCardController {
 	}
 	
 	@ApiOperation(value="카드내역 삭제 card_info")
-	@DeleteMapping(value="/spending/card/{cardId}")
+	@DeleteMapping(value="/card/{cardId}")
 	public ResponseEntity <String> deleteSpendingCard(@PathVariable int cardId){
 		int rc = 0;
 		String msg = null;

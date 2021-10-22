@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@RequestMapping("/spending")
 public class SpendingPaymentController {
 	
 	@Autowired
@@ -31,7 +33,7 @@ public class SpendingPaymentController {
 
 	
 	@ApiOperation(value="나의 결제내역 전체 조회 pay_info")
-	@GetMapping(value="/spending/payment/list")
+	@GetMapping(value="/payment/list")
 //	public ResponseEntity <List<SpendingVO>> selectSpendingPaymentAll(@PathVariable int userId){
 	public ResponseEntity <List<SpendingPaymentVO>> selectSpendingPaymentAll(@RequestParam("userId") int userId){
 
@@ -53,7 +55,7 @@ public class SpendingPaymentController {
 	
 	
 	@ApiOperation(value="나의 결제내역 중 한개 상세조회 pay_info")
-	@GetMapping(value="/spending/payment/{payId}")
+	@GetMapping(value="/payment/{payId}")
 	public ResponseEntity <SpendingPaymentVO> selectSpendingPayment(@PathVariable int payId){
 		SpendingPaymentVO spend = null;
 		try {
@@ -71,7 +73,7 @@ public class SpendingPaymentController {
 	
 	
 	@ApiOperation(value="결제내역 등록 pay_info")
-	@PostMapping(value="/spending/payment")
+	@PostMapping(value="/payment")
 	public ResponseEntity <String> insertSpendingPayment(@RequestBody SpendingPaymentVO spending){
 		int rc = 0;
 		String msg = null;
@@ -92,7 +94,7 @@ public class SpendingPaymentController {
 	}
 	
 	@ApiOperation(value="결제내역 수정 pay_info")
-	@PutMapping(value="/spending/payment")
+	@PutMapping(value="/payment")
 	public ResponseEntity <String> updateSpendingPayment(@RequestBody SpendingPaymentVO spending){
 		int rc = 0;
 		String msg = null;
@@ -113,7 +115,7 @@ public class SpendingPaymentController {
 	}
 	
 	@ApiOperation(value="결제내역 삭제 pay_info")
-	@DeleteMapping(value="/spending/payment/{payId}")
+	@DeleteMapping(value="/payment/{payId}")
 	public ResponseEntity <String> deleteSpendingPayment(@PathVariable int payId){
 		int rc = 0;
 		String msg = null;

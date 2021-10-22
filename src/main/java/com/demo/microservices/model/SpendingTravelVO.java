@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class SpendingVO {
+public class SpendingTravelVO {
 	private int userId ; // 사용자 아이디
 	private int trvlPayId; //여행결제내역 아이디
 	private int trvlId; //내 여행 아이디

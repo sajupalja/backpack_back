@@ -38,11 +38,11 @@ public class SpendingTravelController {
 	
 
 	@ApiOperation(value="나의 여행별 결제내역 전체 조회 pay_trvl_info")
-	@GetMapping(value="/travel/list")
+	@GetMapping(value="/travel/list/{trvlId}")
 	public ResponseEntity <List<SpendingTravelVO>> selectSpendingTravelAll(
 //			@ApiParam(value = "결제내역 조회할 여행 pk", required = true)@RequestParam("trvlId") int trvlId, 
-			@RequestParam("trvlId") int trvlId, 
-			@ApiParam(value = "지출내역 탭 : 결제유형(0.전체(혹은 값안넘겨도됨)/1.숙박/2.식비/3.교통/4.활동/5.기타)", required = false)@RequestParam(required = false) String searchPayType){
+			@PathVariable("trvlId") int trvlId, 
+			@ApiParam(value = "지출내역 탭 : 결제유형(0.전체(혹은 값안넘겨도됨)/1.숙박/2.식비/3.교통/4.활동/5.기타)", required = false)@PathVariable(required = false) String searchPayType){
 		
 		List<SpendingTravelVO> list = null;
 		try {

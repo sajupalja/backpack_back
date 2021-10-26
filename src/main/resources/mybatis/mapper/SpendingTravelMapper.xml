@@ -89,7 +89,7 @@
 		  , #{payMethod}
 		  , #{userId}
 		  , #{payType}
-		  , #{payId}
+		  , 0
 		  , #{userId}
 		  , now()
 		  , #{userId}

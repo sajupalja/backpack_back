@@ -33,6 +33,7 @@
 		<if test="searchPayType != null and searchPayType != ''">
 		   and tpi.pay_type = cast(#{searchPayType} as signed)
 		</if>
+	  order by tpi.pay_dt desc
    </select>
 
    <!-- 나의 여행별 결제내역 중 한개 상세조회 trvl_pay_info -->

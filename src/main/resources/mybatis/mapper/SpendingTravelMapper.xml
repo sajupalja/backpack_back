@@ -84,7 +84,7 @@
 		values (
 		    #{trvlId}
 		  , #{payAmt}
-		  , #{payDt}
+		  , case when #{payDt} is null or #{payDt} = "" then now() else #{payDt} end
 		  , #{payName}
 		  , #{payMethod}
 		  , #{userId}
